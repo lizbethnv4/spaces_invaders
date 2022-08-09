@@ -457,7 +457,30 @@ MonoBehaviour:
   - {fileID: -3502798044291937460, guid: e106800500e69214a91b922829d1aec3, type: 3}
   rows: 5
   columns: 11
-  speed: 10
+  speed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 8
+      inSlope: 27.102394
+      outSlope: 27.102394
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.030520618
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _direction: {x: 1, y: 0, z: 0}
 --- !u!4 &801030177
 Transform:
@@ -593,7 +616,7 @@ GameObject:
   - component: {fileID: 1024130016}
   - component: {fileID: 1024130015}
   - component: {fileID: 1024130018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,8 +725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b11bb900dace2242aec7d794da9219c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 2503420018551714542, guid: a70c798191df1144eae44fd666797117,
+    type: 3}
   speed: 5
-  laserPrefab: {fileID: 0}
 --- !u!1 &1043718381
 GameObject:
   m_ObjectHideFlags: 0

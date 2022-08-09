@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+//[RequireComponent(typeof(SpriteRenderer))]
 public class Invader : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer { get; private set; }
@@ -37,6 +37,8 @@ public class Invader : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            //this.killed.Invoke();
+            //this.gameObject.SetActive(false);
             killed?.Invoke(this);
         }
     }

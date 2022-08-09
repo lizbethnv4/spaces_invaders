@@ -6,25 +6,37 @@ public class Invaders : MonoBehaviour
     public Invader[] prefabs;
     public int rows = 5;
     public int columns = 11;
-    public float speed = 10.0f;
+    public AnimationCurve speed = new AnimationCurve();
+    public System.Action<Invader> killed;
+    public int amountKilled { get; private set; }
+    public int totalInvaders => this.rows * this.columns;
+    public int TotalAmount => rows * columns;
+    public float percentKilled => (float)AmountKilled / (float)TotalAmount;
     public Vector3 _direction = Vector2.right;
-    //public AnimationCurve speed = new AnimationCurve();
-    //public Vector3 direction { get; private set; } = Vector3.right;
+    public Vector3 initialPosition { get; private set; }
+    public int AmountKilled { get; private set; }
+    public int AmountAlive => TotalAmount - AmountKilled;
 
+   
     private void Awake()
     {
-        for(int row=0;row<this.rows;row++)
-        {
-            float width = 2.0f * (this.columns - 1);
-            float height = 2.0f * (this.rows - 1);
+        initialPosition = transform.position;
 
-            Vector2 centering = new Vector2(-width / 2, -height / 2);
-            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f),0.0f);
-            for(int col=0;col<this.columns;col++)
+        for (int i = 0; i < rows; i++)
+        {
+            float width = 2f * (columns - 1);
+            float height = 2f * (rows - 1);
+
+            Vector2 centerOffset = new Vector2(-width * 0.5f, -height * 0.5f);
+            Vector3 rowPosition = new Vector3(centerOffset.x, (2f * i) + centerOffset.y, 0f);
+
+            for (int j = 0; j < columns; j++)
             {
-                Invader invader = Instantiate(this.prefabs[row], this.transform);
+                Invader invader = Instantiate(prefabs[i], transform);
+                invader.killed += OnInvaderKilled;
+
                 Vector3 position = rowPosition;
-                position.x += col * 2.0f;
+                position.x += 2f * j;
                 invader.transform.localPosition = position;
             }
         }
@@ -32,7 +44,7 @@ public class Invaders : MonoBehaviour
 
     private void Update()
     {
-        transform.position += _direction * speed * Time.deltaTime;
+        this.transform.position += _direction * this.speed.Evaluate(this.percentKilled) * Time.deltaTime;
 
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
@@ -64,5 +76,12 @@ public class Invaders : MonoBehaviour
         Vector3 position = transform.position;
         position.y -= 1f;
         transform.position = position;
+    }
+
+    private void OnInvaderKilled(Invader invader)
+    {
+        invader.gameObject.SetActive(false);
+        AmountKilled++;
+        killed(invader);
     }
 }
