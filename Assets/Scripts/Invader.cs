@@ -8,7 +8,8 @@ public class Invader : MonoBehaviour
     public float animationTime = 1f;
     public int animationFrame { get; private set; }
     public int score = 10;
-    public System.Action<Invader> killed;
+    public System.Action killed;
+    //public System.Action<Invader> killed;
 
     private void Awake()
     {
@@ -37,9 +38,9 @@ public class Invader : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
-            //this.killed.Invoke();
-            //this.gameObject.SetActive(false);
-            killed?.Invoke(this);
+            this.killed.Invoke();
+            this.gameObject.SetActive(false);
+            //killed?.Invoke(this);
         }
     }
 

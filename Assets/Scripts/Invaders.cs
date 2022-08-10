@@ -33,7 +33,8 @@ public class Invaders : MonoBehaviour
             for (int j = 0; j < columns; j++)
             {
                 Invader invader = Instantiate(prefabs[i], transform);
-                invader.killed += OnInvaderKilled;
+                //invader.killed += OnInvaderKilled;
+                invader.killed += InvaderKilled;
 
                 Vector3 position = rowPosition;
                 position.x += 2f * j;
@@ -78,10 +79,16 @@ public class Invaders : MonoBehaviour
         transform.position = position;
     }
 
-    private void OnInvaderKilled(Invader invader)
+    //private void OnInvaderKilled(Invader invader)
+    //{
+    //    invader.gameObject.SetActive(false);
+    //    AmountKilled++;
+    //    killed(invader);
+    //}
+    private void InvaderKilled()
     {
-        invader.gameObject.SetActive(false);
-        AmountKilled++;
-        killed(invader);
+        //invader.gameObject.SetActive(false);
+        //AmountKilled++;
+        //killed(invader);
     }
 }

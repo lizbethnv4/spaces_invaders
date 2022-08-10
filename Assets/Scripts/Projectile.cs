@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     public System.Action destroyed;
 
-    void Update()
+    private void Update()
     {
         this.transform.position += this.direction * this.speed * Time.deltaTime;
     }

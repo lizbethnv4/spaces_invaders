@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Projectile laserPrefab;
     public float speed = 5f;
-
-    public bool laserActive { get; private set; }
+    public Projectile laserPrefab;
+    public System.Action killed;
+    public bool _laserActive;
+    //{ get; private set; }
 
     private void Update()
     {
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        // Clamp the position of the character so they do not go out of bounds
         position.x = Mathf.Clamp(position.x, leftEdge.x, rightEdge.x);
         transform.position = position;
 
@@ -37,19 +35,20 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        if (!laserActive)
+        if (!_laserActive)
         {
-            laserActive = true;
-            Projectile laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            Projectile projectile = Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
+            projectile.destroyed += LaserDestroyed;
+            _laserActive = true;
             //laser.destroyed += OnLaserDestroyed;
-           
         }
-       
     }
-
+    private void LaserDestroyed()
+    {
+        _laserActive = false;
+    }
     //private void OnLaserDestroyed(Projectile laser)
     //{
     //    laserActive = false;
     //}
-
 }
