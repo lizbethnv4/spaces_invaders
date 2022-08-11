@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 246287784}
   - component: {fileID: 246287783}
   - component: {fileID: 246287785}
+  - component: {fileID: 246287786}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -337,6 +338,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &246287786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246287782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c58e2da2a17444eaaf455f750ce5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +475,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25
+      value: 2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -472,16 +485,19 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 8
-      inSlope: 27.102394
-      outSlope: 27.102394
+      inSlope: 13.893653
+      outSlope: 13.893653
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.030520618
+      inWeight: 0.04583335
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   _direction: {x: 1, y: 0, z: 0}
+  missileAttackRate: 1
+  missilePrefab: {fileID: 496873654779172394, guid: 363d1ee9bb0c73f499acada5b191dc07,
+    type: 3}
 --- !u!4 &801030177
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +523,7 @@ GameObject:
   - component: {fileID: 928951448}
   - component: {fileID: 928951447}
   - component: {fileID: 928951449}
+  - component: {fileID: 928951450}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -604,6 +621,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &928951450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928951446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c58e2da2a17444eaaf455f750ce5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1024130014
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +769,7 @@ GameObject:
   - component: {fileID: 1043718383}
   - component: {fileID: 1043718382}
   - component: {fileID: 1043718384}
+  - component: {fileID: 1043718385}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -837,6 +867,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1043718385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043718381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c58e2da2a17444eaaf455f750ce5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1095917877
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +947,7 @@ GameObject:
   - component: {fileID: 1120263570}
   - component: {fileID: 1120263569}
   - component: {fileID: 1120263571}
+  - component: {fileID: 1120263572}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -1002,6 +1045,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1120263572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120263568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c58e2da2a17444eaaf455f750ce5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760181132
 GameObject:
   m_ObjectHideFlags: 0

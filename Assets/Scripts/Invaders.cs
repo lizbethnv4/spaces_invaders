@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Invaders : MonoBehaviour
 {
 
@@ -16,8 +16,9 @@ public class Invaders : MonoBehaviour
     public Vector3 initialPosition { get; private set; }
     public int AmountKilled { get; private set; }
     public int AmountAlive => TotalAmount - AmountKilled;
+    public float missileAttackRate = 1.0f;
+    public Projectile missilePrefab;
 
-   
     private void Awake()
     {
         initialPosition = transform.position;
@@ -41,6 +42,12 @@ public class Invaders : MonoBehaviour
                 invader.transform.localPosition = position;
             }
         }
+    }
+
+    private void Start()
+    {
+        //InvokeRepeating(nameof(MissileAttack), missileSpawnRate, missileSpawnRate);
+        InvokeRepeating(nameof(MissileAttack), this.missileAttackRate, this.missileAttackRate);
     }
 
     private void Update()
@@ -69,6 +76,30 @@ public class Invaders : MonoBehaviour
             }
         }
     }
+    private void MissileAttack()
+    {
+        int amountAlive = AmountAlive;
+
+        if (amountAlive == 0)
+        {
+            return;
+        }
+
+        foreach (Transform invader in transform)
+        {
+            if (!invader.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (Random.value < (1f / (float)amountAlive))
+            {
+                Instantiate(missilePrefab, invader.position, Quaternion.identity);
+                break;
+            }
+        }
+
+    }
 
     private void AdvanceRow()
     {
@@ -88,7 +119,11 @@ public class Invaders : MonoBehaviour
     private void InvaderKilled()
     {
         //invader.gameObject.SetActive(false);
-        //AmountKilled++;
+        AmountKilled++;
+        if (this.AmountKilled >= this.totalInvaders)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         //killed(invader);
     }
 }

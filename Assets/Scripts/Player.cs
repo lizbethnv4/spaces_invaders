@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -51,4 +52,16 @@ public class Player : MonoBehaviour
     //{
     //    laserActive = false;
     //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Missile") ||
+            other.gameObject.layer == LayerMask.NameToLayer("Invader"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //if (killed != null)
+            //{
+            //    killed.Invoke();
+            //}
+        }
+    }
 }
