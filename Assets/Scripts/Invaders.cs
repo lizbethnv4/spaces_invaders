@@ -126,4 +126,16 @@ public class Invaders : MonoBehaviour
         }
         //killed(invader);
     }
+
+    public void ResetInvaders()
+    {
+        AmountKilled = 0;
+        _direction = Vector3.right;
+        transform.position = initialPosition;
+
+        foreach (Transform invader in transform)
+        {
+            invader.gameObject.SetActive(true);
+        }
+    }
 }
