@@ -15,13 +15,13 @@ public class Projectile : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
     }
 
-    //private void OnDestroy()
-    //{
-    //    if (destroyed != null)
-    //    {
-    //        destroyed.Invoke(this);
-    //    }
-    //}
+    private void OnDestroy()
+    {
+        if (destroyed != null)
+        {
+            destroyed.Invoke();
+        }
+    }
 
     private void Update()
     {

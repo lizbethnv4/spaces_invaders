@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 185547768}
   - component: {fileID: 185547767}
   - component: {fileID: 185547769}
+  - component: {fileID: 185547770}
   m_Layer: 0
   m_Name: MysteryShip
   m_TagString: Untagged
@@ -229,6 +230,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &185547770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185547766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80af95d00850714aaf248a4cf79b3aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  cycleTime: 30
+  score: 300
 --- !u!1 &246287782
 GameObject:
   m_ObjectHideFlags: 0
