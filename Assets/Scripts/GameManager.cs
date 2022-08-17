@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public sealed class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //Si pulsa la tecla S o hace clic izquierdo empieza el juego
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetMouseButton(0))
+        {
+            //Cargo la escena de Juego
+            SceneManager.LoadScene("SpaceInvaders");
+        }
+
         if (lives <= 0 && Input.GetKeyDown(KeyCode.Return))
         {
             NewGame();
