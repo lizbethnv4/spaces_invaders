@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 8f;
     public Projectile laserPrefab;
     public System.Action killed;
-    public bool _laserActive;
-    //{ get; private set; }
-
+    public bool laserActive { get; private set; }
+    
     private void Update()
     {
         Vector3 position = transform.position;
@@ -36,32 +34,29 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        if (!_laserActive)
+        if (!laserActive)
         {
-            Projectile projectile = Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
-            projectile.destroyed += LaserDestroyed;
-            _laserActive = true;
-            //laser.destroyed += OnLaserDestroyed;
+            laserActive = true;
+
+            Projectile laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            laser.destroyed += OnLaserDestroyed;
+            
         }
     }
-    private void LaserDestroyed()
+    private void OnLaserDestroyed(Projectile laser)
     {
-        _laserActive = false;
+        laserActive = false;
     }
-    //private void OnLaserDestroyed(Projectile laser)
-    //{
-    //    laserActive = false;
-    //}
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Missile") ||
             other.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //if (killed != null)
-            //{
-            //    killed.Invoke();
-            //}
+            if (killed != null)
+            {
+                killed.Invoke();
+            }
         }
     }
 }
