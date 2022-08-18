@@ -498,7 +498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SPACES INVADERS
+  m_Text: SPACE INVADERS
 --- !u!222 &693218101
 CanvasRenderer:
   m_ObjectHideFlags: 0
